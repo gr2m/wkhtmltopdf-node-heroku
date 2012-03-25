@@ -23,7 +23,7 @@ http.createServer(function (req, res) {
   }
   
   var pdf_url = req.url.substr(1),
-      pdf_path = './tmp/' +pdf_url.replace(/\//g, '_') + '.pdf';
+      pdf_path = './' +pdf_url.replace(/\//g, '_') + '.pdf';
   
   path.exists(pdf_path, function(exists) {
 
