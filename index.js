@@ -22,7 +22,8 @@ http.createServer(function (req, res) {
     return;
   }
   
-  var pdf_url = req.url.substr(1),
+  var protocol = req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http'
+      pdf_url = req.url.substr(1),
       pdf_path = './' +pdf_url.replace(/\//g, '_') + '.pdf';
   
   path.exists(pdf_path, function(exists) {
@@ -42,7 +43,7 @@ http.createServer(function (req, res) {
     else {
       console.log('generating ' + pdf_path + ' out of ' + pdf_url)
       
-      child = exec([wkhtmltopdf_path, '--print-media-type', '--no-background', 'https://' + pdf_url, pdf_path].join(' '),
+      child = exec([wkhtmltopdf_path, '--print-media-type', '--no-background', protocol + '://' + pdf_url, pdf_path].join(' '),
         function (error, stdout, stderr) {
           console.log('stdout: ' + stdout);
           console.log('stderr: ' + stderr);
