@@ -42,7 +42,7 @@ http.createServer(function (req, res) {
     else {
       console.log('generating ' + pdf_path + ' out of ' + pdf_url)
       
-      child = exec([wkhtmltopdf_path, 'https://' + pdf_url, pdf_path].join(' '),
+      child = exec([wkhtmltopdf_path, '--print-media-type', '--no-background', 'https://' + pdf_url, pdf_path].join(' '),
         function (error, stdout, stderr) {
           console.log('stdout: ' + stdout);
           console.log('stderr: ' + stderr);
