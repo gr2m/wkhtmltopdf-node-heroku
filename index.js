@@ -43,6 +43,14 @@ http.createServer(function (req, res) {
       console.log('generating ' + pdf_path + ' out of ' + pdf_url)
       
       
+      child = exec('wkhtmltopdf -V',
+        function (error, stdout, stderr) {
+          console.log('stdout: ' + stdout);
+          console.log('stderr: ' + stderr);
+          if (error !== null) {
+            console.log('exec error: ' + error);
+          }
+      });
       child = exec([wkhtmltopdf_path, pdf_url, pdf_path].join(' '),
         function (error, stdout, stderr) {
           console.log('stdout: ' + stdout);
