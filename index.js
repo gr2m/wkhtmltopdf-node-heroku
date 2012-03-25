@@ -11,8 +11,8 @@ var wkhtmltopdf_path = process.env.PORT ? './bin/wkhtmltopdf-linux-amd64' : 'wkh
 http.createServer(function (req, res) {
   
   if (req.url == '/') {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('generating pdf ...\n');
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end('try something like <a href="/news.google.ch/nwshp">/news.google.ch/nwshp</a> ...\n');
     return;
   };
   
