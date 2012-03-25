@@ -6,7 +6,7 @@ var port = process.env.PORT || 5315,
     http = require('http');
 http.createServer(function (req, res) {
   
-  child = exec('./bin/wkhtmltopdf-linux-amd64 --help',
+  child = exec('./bin/wkhtmltopdf-linux-amd64 www.google.com ./tmp/google.pdf',
     function (error, stdout, stderr) {
       console.log('stdout: ' + stdout);
       console.log('stderr: ' + stderr);
