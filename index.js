@@ -42,16 +42,7 @@ http.createServer(function (req, res) {
     else {
       console.log('generating ' + pdf_path + ' out of ' + pdf_url)
       
-      
-      child = exec(wkhtmltopdf_path + ' -V',
-        function (error, stdout, stderr) {
-          console.log('stdout: ' + stdout);
-          console.log('stderr: ' + stderr);
-          if (error !== null) {
-            console.log('exec error: ' + error);
-          }
-      });
-      child = exec([wkhtmltopdf_path, pdf_url, pdf_path].join(' '),
+      child = exec([wkhtmltopdf_path, pdf_url, pdf_path, '--enable-javascript'].join(' '),
         function (error, stdout, stderr) {
           console.log('stdout: ' + stdout);
           console.log('stderr: ' + stderr);
