@@ -1,4 +1,5 @@
 {
   "name": "webkithtml2pdf-service-heroku",
-  "version": "0.0.0-1"
+  "version": "0.0.0-1",
+  "repository": "github:gr2m/wkhtmltopdf-node-heroku"
 }
